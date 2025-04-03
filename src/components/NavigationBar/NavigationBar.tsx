@@ -3,7 +3,7 @@ import "../../styles/NavigationBar.css";
 
 function NavigationBar() : ReactElement {
     return (
-        <nav className="navigation-bar navbar navbar-expand-lg navbar-light bg-light">
+        <nav className="navigation-bar navbar navbar-expand-lg navbar-dark bg-dark" data-bs-theme="dark">
             <a className="navbar-brand h1" href="#">Gameify</a>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                     aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
