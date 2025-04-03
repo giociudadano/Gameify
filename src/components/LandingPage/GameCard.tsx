@@ -11,6 +11,13 @@ interface GameCardProps {
     game: GameCardData;
 }
 
+function getRating(rating: string) : string {
+    if (!rating) {
+        return `No ratings`;
+    }
+    return `${Number(rating).toFixed(2)} ★`;
+}
+
 function GameCard({game} : GameCardProps): ReactElement {
     function getScreenshots() : string {
         if (game.ipadScreenshotUrls[0]) {
@@ -31,6 +38,8 @@ function GameCard({game} : GameCardProps): ReactElement {
                     <div className="card-img-overlay d-flex align-items-start justify-content-center">
                         <img className="card-icon" src={game.artworkUrl100} alt="Icon"></img>
                     </div>
+                    <div className="card-developer">{game.artistName}</div>
+                    <div className="card-rating">{getRating(game.averageUserRating)}</div>
                     <p className="card-description">{game.description}</p>
                 </div>
             </div>

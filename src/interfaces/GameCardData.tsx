@@ -4,4 +4,6 @@ export interface GameCardData {
     trackName: string;
     description: string;
     artworkUrl100: string;
+    averageUserRating: string;
+    artistName: string;
 }

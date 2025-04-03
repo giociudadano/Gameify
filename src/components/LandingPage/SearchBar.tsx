@@ -1,4 +1,5 @@
 import {ReactElement, useState} from "react";
+import "../../styles/SearchBar.css";
 
 function SearchBar({onSearch}) : ReactElement {
     const [query, setQuery] = useState("");
@@ -13,12 +14,20 @@ function SearchBar({onSearch}) : ReactElement {
     }
 
     return (
-        <form className="form-inline">
-            <input value={query} onChange={onChange} className="form-control w-75 d-inline"
-                   type="text" placeholder="Search" aria-label="Search"/>
-            <button className="btn btn-outline-success w-25 d-inline" onClick={handleSearch}>Search
-            </button>
-        </form>
+        <div>
+            <div className="header">Search Games & Apps</div>
+            <div className="row gx-2 pt-2">
+                <div className="col-9">
+                    <input value={query} onChange={onChange} className="form-control d-inline"
+                           type="text" placeholder="Search..." aria-label="Search"/>
+                </div>
+                <div className="col-3">
+                    <button className="btn btn-success d-inline" onClick={handleSearch}>Search
+                    </button>
+                </div>
+
+            </div>
+        </div>
     );
 }
 

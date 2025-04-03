@@ -31,14 +31,26 @@
     color: #EEE;
 }
 
+.card-developer {
+    font-size: 0.8rem;
+    margin: 0.5rem auto;
+    color: #CCC;
+}
+
+.card-rating {
+    color: gold;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
 .card-description {
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 6;
+    -webkit-line-clamp: 4;
     overflow: hidden;
     font-size: 0.7rem;
     font-weight: 400;
-    line-height: 1.1rem;
+    line-height: 1rem;
     text-align: justify;
     text-overflow: ellipsis;
     margin: 0.7rem;

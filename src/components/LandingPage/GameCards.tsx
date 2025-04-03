@@ -9,15 +9,27 @@ import {ReactElement, useEffect, useState} from "react";
 import GameCard from "./GameCard.tsx";
 import {GameCardsData} from "../../interfaces/GameCardsData.tsx";
 import {GameCardData} from "../../interfaces/GameCardData.tsx";
+import {SortOption} from "../../types/SortOption.tsx";
 
 interface GameCardsProps {
-    searchText?: string
+    searchText?: string,
+    sort?: string
 }
 
-function GameCards({searchText}: GameCardsProps): ReactElement {
+function GameCards({searchText, sort}: GameCardsProps): ReactElement {
     const [data, setData] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
+    const gameCardsData: GameCardsData = data!;
+
+    useEffect(() => {
+        fetchGames(searchText);
+    }, [searchText]);
+
+    useEffect(() => {
+        sortGames();
+    }, [sort]);
+
 
     function getQueryURL(searchText: string) {
         const QUERY_LIMIT = 30;
@@ -47,17 +59,27 @@ function GameCards({searchText}: GameCardsProps): ReactElement {
     }
 
     function sortGames() {
+        if (!gameCardsData) {
+            return;
+        }
+
         gameCardsData.results.sort((a, b) => {
             const gameA = a as unknown as GameCardData;
             const gameB = b as unknown as GameCardData;
 
-            return gameA.trackName.localeCompare(gameB.trackName);
+
+            const sortOption : SortOption = SortOption[sort as any];
+            switch (sortOption) {
+                case SortOption["Rating"]:
+                    return Number(gameB.averageUserRating) - Number(gameA.averageUserRating);
+                case SortOption["Developer Name"]:
+                    return gameA.artistName.localeCompare(gameB.artistName);
+                case SortOption["App Name"]:
+                default:
+                    return gameA.trackName.localeCompare(gameB.trackName);
+            }
         });
     }
-
-    useEffect(() => {
-        fetchGames(searchText);
-    }, [searchText]);
 
     if (isLoading) {
         return (
@@ -65,7 +87,7 @@ function GameCards({searchText}: GameCardsProps): ReactElement {
         );
     }
 
-    const gameCardsData: GameCardsData = data!;
+
     if (error || !gameCardsData || !gameCardsData.results) {
         return (
             <div>There was an error.</div>

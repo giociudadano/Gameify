@@ -1,0 +1,18 @@
+.header {
+    color: #DDD;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.btn-success {
+    font-size: 0.8rem;
+    background-color: blueviolet;
+}
+
+.btn-success:hover {
+    background-color: mediumpurple;
+}
+
+.form-control {
+    font-size: 0.8rem;
+}
