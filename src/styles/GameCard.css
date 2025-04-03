@@ -5,10 +5,24 @@
     background-color: whitesmoke;
 }
 
-.card-description {
-    font-size: 0.8rem;
-    min-height: 4.5rem;
-    max-height: 4.5rem;
-    text-overflow: ellipsis;
+.card-title {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
     overflow: hidden;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.card-description {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 6;
+    overflow: hidden;
+    font-size: 0.8rem;
+    font-weight: 400;
+    line-height: 1.2rem;
+    text-align: justify;
+    text-overflow: ellipsis;
+    margin: 0.7rem;
 }

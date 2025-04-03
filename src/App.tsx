@@ -1,9 +1,14 @@
-import GameCards from "./components/LandingPage/GameCards.tsx";
 import "bootstrap/dist/css/bootstrap.css";
+import LandingPage from "./components/LandingPage/LandingPage.tsx";
+import NavigationBar from "./components/NavigationBar/NavigationBar.tsx";
+import {Fragment} from "react";
 
 function App() {
     return (
-        <GameCards />
+        <Fragment>
+            <NavigationBar></NavigationBar>
+            <LandingPage></LandingPage>
+        </Fragment>
     )
 }
 
